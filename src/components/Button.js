@@ -1,5 +1,5 @@
 import React from 'react';
-import {btn} from '../App.module.css';
+import {btn} from './Button.module.css';
 
 const Button = (props) => {
   console.log('Button ran');
