@@ -1,29 +1,21 @@
-import react, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
+import Child from './components/Child';
+import Button from './components/Button';
 
 import style from './App.module.css';
 
 function App() {
-  const [firstDemoText, setFirstDemoText] = useState(false);
-  const [secondDemoText, setSecondDemoText] = useState(true);
+  const [demoText, setDemoText] = useState(true);
 
-  const firstBtnClickHandler = () => {
-    setFirstDemoText((preState) => !preState);
-  };
 
-  const secondBtnClickHandler = () => {
-    if (firstDemoText) {
-      setSecondDemoText((preState) => !preState);
-    }
-  };
+  const secondBtnClickHandler = useCallback(() => {
+      setDemoText((preState) => !preState);
+  },[]);
 
   return (
     <div className={style.main}>
-      <button className={style.btn} onClick={firstBtnClickHandler}>
-        {firstDemoText ? 'on' : 'off'}
-      </button>
-      <button className={style.btn} onClick={secondBtnClickHandler}>
-        {secondDemoText ? 'true' : 'false'}
-      </button>
+      <Child text={demoText ? 'true' : 'false'} />
+      <Button text={'change text'} onClickHandler={secondBtnClickHandler} />
     </div>
   );
 }
