@@ -9,7 +9,7 @@ import style from './App.module.css'
 function App() {
   const [demoText, setDemoText] = useState(true);
 
-  const secondBtnClickHandler = useCallback(() => {
+  const btnClickHandler = useCallback(() => {
     setDemoText((preState) => !preState);
   }, []);
 
@@ -19,11 +19,11 @@ function App() {
         <Text text={demoText ? 'true' : 'false'} />
         <Button
           text={'change Boolean'}
-          onClickHandler={secondBtnClickHandler}
+          onClickHandler={btnClickHandler}
         />
       </Center>
       <Center>
-        <MemoDemo numbers={[1, 2, 3, 4, 5]} />
+        <MemoDemo arr={[1, 2, 3, 4, 5]} />
       </Center>
     </React.Fragment>
   );
